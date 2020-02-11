@@ -1,0 +1,50 @@
+import random
+
+
+def hangMan():
+    words = ['rainbow', 'marigold', 'illinois']
+    word = random.choice(words)
+    guesses = []
+    print("You will get 12 turns to guess the word")
+
+    turns = 12
+    correct = 0
+    guess = ' '
+
+    while turns >=0:
+        if guess in word:
+            correct += 1
+
+        for char in word:
+            if char in guesses:
+                print(char, end = " ")
+
+            else:
+                print("*", end = " ")
+
+        print("\n")
+        print("Turns = {} ".format(turns))
+
+        if turns == 0:
+            print("You Lose ..!!!! Better luck next time")
+            break;
+        elif correct == len(word):
+            print("Congratulations !!!! You Win..")
+            break;
+
+        guess = input("Guess the word - ")
+        guesses.append(guess)
+        turns -= 1
+    return
+
+
+
+if __name__ == '__main__':
+    name = input("What is your name ?? ")
+    print("Welcome " + name + " !!!! All the best")
+    cont = True
+    while cont:
+        hangMan()
+        play = input("Press any key to continue or N/n to Exit -- ")
+        if play == 'N' or play == 'n':
+            cont = False
