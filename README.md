@@ -1,2 +1,2 @@
 # PythonRepository
-Programs created while learning python
+Collection of python programs
