@@ -2,8 +2,10 @@ import random
 
 
 def hangMan():
-    words = ['rainbow', 'marigold', 'illinois']
+    f = open('hangman_words/words.txt','r')
+    words = f.readlines()
     word = random.choice(words)
+    word = word.strip()
     guesses = []
     print("You will get 12 turns to guess the word")
 
@@ -14,6 +16,8 @@ def hangMan():
     while turns >=0:
         if guess in word:
             correct += 1
+        else:
+            print("{} is not in the word...".format(guess))
 
         for char in word:
             if char in guesses:
@@ -26,6 +30,7 @@ def hangMan():
         print("Turns = {} ".format(turns))
 
         if turns == 0:
+            print("The word is {}. ".format(word))
             print("You Lose ..!!!! Better luck next time")
             break;
         elif correct == len(word):
@@ -47,4 +52,5 @@ if __name__ == '__main__':
         hangMan()
         play = input("Press any key to continue or N/n to Exit -- ")
         if play == 'N' or play == 'n':
+            print("Thanks for playing.. I hope you enjoyed..")
             cont = False
